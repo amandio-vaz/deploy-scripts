@@ -1,0 +1,155 @@
+# ============================================
+# DOCKER COMPOSE - REACT VITE APPLICATION
+# Compose Specification (Modern Format - No version field required)
+# Best Practices 2025 - Amândio Vaz
+# ============================================
+
+# NOTA: A partir do Docker Compose 1.27+, o campo 'version' não é mais necessário
+# O Docker Compose detecta automaticamente a especificação correta
+
+name: ${APP_NAME:-react-app}
+
+services:
+  frontend:
+    container_name: ${APP_NAME:-react-app}
+    
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+        - BUILD_DATE=${BUILD_DATE:-}
+        - VCS_REF=${VCS_REF:-}
+      # Cache para acelerar builds
+      cache_from:
+        - ${APP_NAME:-react-app}:latest
+    
+    image: ${APP_NAME:-react-app}:${TAG:-latest}
+    
+    ports:
+      - "${PORT:-80}:80"
+    
+    environment:
+      - NODE_ENV=production
+      - TZ=${TZ:-America/Sao_Paulo}
+    
+    # Volumes para logs persistentes
+    volumes:
+      - ./logs/nginx:/var/log/nginx:rw
+      # Volume anônimo para evitar sobrescrita
+      - /usr/share/nginx/html
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Resource limits (recomendado para produção)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Networking
+    networks:
+      - app-network
+    
+    # Labels para organização e metadados
+    labels:
+      com.gps.application: "${APP_NAME:-react-app}"
+      com.gps.environment: "${ENVIRONMENT:-production}"
+      com.gps.managed-by: "docker-compose"
+      com.gps.deployed-at: "${DEPLOYED_AT:-}"
+      org.opencontainers.image.vendor: "VAZ AI"
+      org.opencontainers.image.title: "${APP_NAME:-react-app}"
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "com.gps.application,com.gps.environment"
+    
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    
+    # Read-only root filesystem (descomente se possível)
+    # read_only: true
+    # tmpfs:
+    #   - /tmp
+    #   - /var/run
+    
+    # User (já configurado no Dockerfile, mas pode ser reforçado aqui)
+    # user: "10001:10001"
+
+  # ============================================
+  # SERVIÇO DE BACKEND (Opcional - Exemplo)
+  # ============================================
+  # backend:
+  #   container_name: ${APP_NAME:-react-app}-backend
+  #   image: node:22-slim
+  #   working_dir: /app
+  #   command: npm start
+  #   ports:
+  #     - "${BACKEND_PORT:-3001}:3001"
+  #   volumes:
+  #     - ./backend:/app
+  #     - /app/node_modules
+  #   environment:
+  #     - NODE_ENV=production
+  #     - PORT=3001
+  #     - TZ=${TZ:-America/Sao_Paulo}
+  #   restart: unless-stopped
+  #   networks:
+  #     - app-network
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "3"
+
+# ============================================
+# NETWORKS
+# ============================================
+networks:
+  app-network:
+    driver: bridge
+    name: ${APP_NAME:-react-app}-network
+    labels:
+      com.gps.application: "${APP_NAME:-react-app}"
+      com.gps.network.type: "application"
+
+# ============================================
+# VOLUMES (Se necessário)
+# ============================================
+volumes:
+  # Exemplo de volume nomeado para dados persistentes
+  # app-data:
+  #   driver: local
+  #   labels:
+  #     com.gps.application: "${APP_NAME:-react-app}"
+  #     com.gps.volume.type: "data"
+  
+  # Volume para logs (opcional - se não usar bind mount)
+  logs:
+    driver: local
+    labels:
+      com.gps.application: "${APP_NAME:-react-app}"
+      com.gps.volume.type: "logs"
