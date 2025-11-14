@@ -344,5 +344,5 @@ manage-apps
 
 ---
 
-*Desenvolvido com ❤️ por Vaz - GPS IT Services*  
-*Infrastructure & Observability Engineering*
+*Desenvolvido com muito ❤️ por Amândio Vaz*  
+*Infra, Sec & Observability Engineering*
