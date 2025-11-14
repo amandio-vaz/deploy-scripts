@@ -1,5 +1,0 @@
-## REACT
-
----
-
-### EM DESENVOLVIMENTO
