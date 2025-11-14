@@ -1,6 +1,6 @@
-# 🚀 Deploy Automático React + Docker 
+# Deploy Automático React + Docker 
 
-Sistema completo de deploy automatizado para aplicações React com Docker**.
+## Sistema completo de deploy automatizado para aplicações React com Docker.
 
 **Desenvolvido por: Amândio Vaz - AIOps**
 
