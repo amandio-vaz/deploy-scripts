@@ -154,18 +154,23 @@ validate_system() {
     if [ "$AVAILABLE" -lt 524288 ]; then  # < 512MB
         log_warning "Espaço em disco baixo: ${AVAILABLE}KB"
     else
-        AVAILABLE_GB=$(echo "scale=2; $AVAILABLE / 1048576" | bc)
+        AVAILABLE_GB=$(awk "BEGIN {printf \"%.2f\", $AVAILABLE / 1048576}")
         log_success "Espaço em disco: ${AVAILABLE_GB}GB"
     fi
 
     # Portas
-    if netstat -tuln 2>/dev/null | grep -q ':80 '; then
+    local port_check_cmd="ss -tuln 2>/dev/null"
+    if ! command -v ss &> /dev/null; then
+        port_check_cmd="netstat -tuln 2>/dev/null"
+    fi
+
+    if eval "$port_check_cmd" | grep -q ':80'; then
         log_warning "Porta 80 já em uso"
     else
         log_success "Porta 80: Disponível"
     fi
 
-    if netstat -tuln 2>/dev/null | grep -q ':3001 '; then
+    if eval "$port_check_cmd" | grep -q ':3001'; then
         log_warning "Porta 3001 já em uso"
     else
         log_success "Porta 3001: Disponível"
@@ -213,20 +218,26 @@ setup_environment() {
         log_warning "GEMINI_API_KEY ainda com valor placeholder"
         log_info "Digite sua chave API do Gemini:"
         read -p "GEMINI_API_KEY: " api_key
-        
+
         if [ -z "$api_key" ]; then
             log_error "Chave API não pode estar vazia"
             exit 1
         fi
-        
+
         # Backup do .env antigo
         cp "$ENV_FILE" "${ENV_FILE}.bak"
-        
-        # Atualizar .env
-        sed -i "s|GEMINI_API_KEY=sua_chave_aqui|GEMINI_API_KEY=$api_key|g" "$ENV_FILE"
+
+        # Atualizar .env com escape de caracteres especiais
+        api_key_escaped=$(printf '%s\n' "$api_key" | sed -e 's/[\/&]/\\&/g')
+        sed -i "s|GEMINI_API_KEY=sua_chave_aqui|GEMINI_API_KEY=$api_key_escaped|g" "$ENV_FILE"
         log_success "GEMINI_API_KEY configurada"
     else
         log_success "GEMINI_API_KEY já configurada"
+    fi
+
+    # Validar .env antes de carregar
+    if ! grep -E '^[A-Z_]+=' "$ENV_FILE" > /dev/null; then
+        log_warning ".env pode estar vazio ou inválido"
     fi
 
     # Carregar variáveis
@@ -271,13 +282,12 @@ stop_containers() {
 
     if docker-compose ps 2>/dev/null | grep -q "Up"; then
         log_info "Containers rodando detectados..."
-        
+
         # Graceful shutdown
         docker-compose down --remove-orphans 2>/dev/null &
         local pid=$!
-        log_spinner $pid "  Encerrando containers..."
-        
-        if [ $? -eq 0 ]; then
+
+        if log_spinner $pid "  Encerrando containers..."; then
             log_success "Containers parados"
             sleep 2
         else
@@ -311,14 +321,13 @@ build_backend() {
 
     cd "$BACKEND_PATH"
 
-    log_info "Frontend..."
+    log_info "Backend..."
     docker build -t cortex/myfuckexam-backend:latest . > /tmp/backend-build.log 2>&1 &
     local pid=$!
-    log_spinner $pid "  Buildando backend..."
 
-    if [ $? -eq 0 ]; then
+    if log_spinner $pid "  Buildando backend..."; then
         log_success "Backend buildado com sucesso"
-        
+
         # Tag com timestamp
         local tag=$(date +%Y%m%d-%H%M%S)
         docker tag cortex/myfuckexam-backend:latest "cortex/myfuckexam-backend:${tag}" 2>/dev/null || true
@@ -338,11 +347,10 @@ build_frontend() {
     log_info "Frontend..."
     docker build -t cortex/myfuckexam-frontend:latest . > /tmp/frontend-build.log 2>&1 &
     local pid=$!
-    log_spinner $pid "  Buildando frontend..."
 
-    if [ $? -eq 0 ]; then
+    if log_spinner $pid "  Buildando frontend..."; then
         log_success "Frontend buildado com sucesso"
-        
+
         # Tag com timestamp
         local tag=$(date +%Y%m%d-%H%M%S)
         docker tag cortex/myfuckexam-frontend:latest "cortex/myfuckexam-frontend:${tag}" 2>/dev/null || true
@@ -363,9 +371,8 @@ start_containers() {
 
     docker-compose up -d 2>&1 &
     local pid=$!
-    log_spinner $pid "  Iniciando containers..."
 
-    if [ $? -eq 0 ]; then
+    if log_spinner $pid "  Iniciando containers..."; then
         log_success "Containers iniciados"
         sleep 5
     else
@@ -387,7 +394,7 @@ health_check() {
     # Backend
     log_info "Aguardando Backend..."
     while [ $attempt -lt $max_attempts ]; do
-        if curl -sf http://localhost:3001/health > /dev/null 2>&1; then
+        if curl -sf --connect-timeout 5 --max-time 10 http://localhost:3001/health > /dev/null 2>&1; then
             log_success "Backend respondendo"
             backend_ok=true
             break
@@ -409,7 +416,7 @@ health_check() {
     attempt=0
     log_info "Aguardando Frontend..."
     while [ $attempt -lt $max_attempts ]; do
-        if curl -sf http://localhost/health > /dev/null 2>&1; then
+        if curl -sf --connect-timeout 5 --max-time 10 http://localhost/health > /dev/null 2>&1; then
             log_success "Frontend respondendo"
             frontend_ok=true
             break
