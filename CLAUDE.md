@@ -1,110 +1,110 @@
-# CLAUDE.md - AI Assistant Guide
+# CLAUDE.md - Guia para Assistentes de IA
 
-**Repository**: deploy-scripts (codes-pub)
-**Owner**: Amândio Vaz
-**License**: MIT
-**Last Updated**: 2025-11-21
-
----
-
-## 📋 Repository Overview
-
-This is a public code-sharing repository containing deployment scripts, automation tools, and modular architectures. The primary goal is to **share knowledge freely** and accelerate development through practical, tested solutions.
-
-### Core Philosophy
-
-- **No knowledge hierarchies** - All contributors are equal (human or AI)
-- **Knowledge sharing over hoarding** - Collaboration trumps ego
-- **Quality over credentials** - What matters is the quality of contributions
-- **Open collaboration** - Experimental, validated, and production code coexist
-
-### Repository Purpose
-
-1. **Knowledge Sharing**: Provide tested technical solutions
-2. **Development Acceleration**: Offer reusable code blocks and templates
-3. **Technical Reference**: Serve as a library for common problems
-4. **Collaborative Learning**: Facilitate learning through practical examples
+**Repositório**: deploy-scripts (codes-pub)
+**Proprietário**: Amândio Vaz
+**Licença**: MIT
+**Última Atualização**: 2025-11-21
 
 ---
 
-## 🗂️ Repository Structure
+## 📋 Visão Geral do Repositório
+
+Este é um repositório público de compartilhamento de códigos contendo scripts de deploy, ferramentas de automação e arquiteturas modulares. O objetivo principal é **compartilhar conhecimento livremente** e acelerar o desenvolvimento através de soluções práticas e testadas.
+
+### Filosofia Central
+
+- **Sem hierarquias de conhecimento** - Todos os colaboradores são iguais (humanos ou IAs)
+- **Compartilhamento sobre acúmulo** - Colaboração supera ego
+- **Qualidade sobre credenciais** - O que importa é a qualidade das contribuições
+- **Colaboração aberta** - Códigos experimentais, validados e de produção coexistem
+
+### Propósito do Repositório
+
+1. **Compartilhamento de Conhecimento**: Fornecer soluções técnicas testadas
+2. **Aceleração de Desenvolvimento**: Oferecer blocos de código reutilizáveis e templates
+3. **Referência Técnica**: Servir como biblioteca para problemas comuns
+4. **Aprendizado Colaborativo**: Facilitar aprendizado através de exemplos práticos
+
+---
+
+## 🗂️ Estrutura do Repositório
 
 ```
 deploy-scripts/
-├── bash/                          # Bash automation scripts
-│   └── apps-ai/                   # AI application deployment scripts
-│       ├── auto-deploy.sh         # Full automated deployment (v1.0)
-│       └── auto-deploy-opt.sh     # Optimized deployment variant
+├── bash/                          # Scripts de automação em Bash
+│   └── apps-ai/                   # Scripts de deploy para aplicações IA
+│       ├── auto-deploy.sh         # Deploy automatizado completo (v1.0)
+│       └── auto-deploy-opt.sh     # Variante otimizada do deploy
 │
-├── react/                         # React + Docker deployment system
-│   ├── install.sh                 # System installer (sets up environment)
-│   ├── manage-apps.sh             # Application manager (CLI/interactive)
-│   ├── quick.sh                   # Quick deployment script
-│   ├── vite.sh                    # Vite-specific deployment
-│   ├── Dockerfile                 # Multi-stage build Dockerfile
-│   ├── docker-compose.yml         # Container orchestration
-│   ├── nginx.conf                 # Nginx web server config
-│   ├── README.md                  # Quick start guide
-│   ├── README-DOCKER.md           # Docker-specific docs
-│   └── guia-completo.md          # Complete guide (Portuguese)
+├── react/                         # Sistema de deploy React + Docker
+│   ├── install.sh                 # Instalador do sistema (configura ambiente)
+│   ├── manage-apps.sh             # Gerenciador de aplicações (CLI/interativo)
+│   ├── quick.sh                   # Script de deploy rápido
+│   ├── vite.sh                    # Deploy específico para Vite
+│   ├── Dockerfile                 # Dockerfile multi-stage build
+│   ├── docker-compose.yml         # Orquestração de containers
+│   ├── nginx.conf                 # Configuração do servidor web Nginx
+│   ├── README.md                  # Guia de início rápido
+│   ├── README-DOCKER.md           # Documentação específica do Docker
+│   └── guia-completo.md          # Guia completo (Português)
 │
 ├── .github/
 │   └── workflows/
-│       └── jekyll-docker.yml      # Jekyll CI/CD pipeline
+│       └── jekyll-docker.yml      # Pipeline CI/CD do Jekyll
 │
-├── README.md                      # Main repository documentation
-├── LICENSE                        # MIT License
-└── CLAUDE.md                      # This file (AI assistant guide)
+├── README.md                      # Documentação principal do repositório
+├── LICENSE                        # Licença MIT
+└── CLAUDE.md                      # Este arquivo (guia para assistentes IA)
 ```
 
 ---
 
-## 🎯 Key Technologies
+## 🎯 Tecnologias Principais
 
-### Primary Stack
-- **Containerization**: Docker, Docker Compose
+### Stack Primário
+- **Containerização**: Docker, Docker Compose
 - **Frontend**: React.js, Vite, HTML5/CSS3
 - **Backend**: Node.js, Python, FastAPI
-- **Web Server**: Nginx (with optimization)
-- **Scripting**: Bash (with extensive error handling)
+- **Servidor Web**: Nginx (com otimizações)
+- **Scripting**: Bash (com tratamento extensivo de erros)
 
-### Planned Coverage (Organic Growth)
-- **DevOps/SecOps**: Kubernetes, CI/CD, IaC, Observability, SIEM
-- **AI/ML**: n8n workflows, LLMs, RAG systems, Vector DBs
-- **Databases**: OLTP, SQL queries
+### Cobertura Planejada (Crescimento Orgânico)
+- **DevOps/SecOps**: Kubernetes, CI/CD, IaC, Observabilidade, SIEM
+- **IA/ML**: Workflows n8n, LLMs, sistemas RAG, Vector DBs
+- **Bancos de Dados**: OLTP, queries SQL
 
 ---
 
-## 🚀 Deployment Scripts Deep Dive
+## 🚀 Análise Profunda dos Scripts de Deploy
 
-### 1. Auto-Deploy Scripts (`bash/apps-ai/`)
+### 1. Scripts Auto-Deploy (`bash/apps-ai/`)
 
-**Location**: `bash/apps-ai/auto-deploy.sh` and `auto-deploy-opt.sh`
+**Localização**: `bash/apps-ai/auto-deploy.sh` e `auto-deploy-opt.sh`
 
-**Purpose**: Automated deployment for containerized applications (specifically targeting "MyFuckExam" app)
+**Propósito**: Deploy automatizado para aplicações containerizadas (especificamente voltado para a app "MyFuckExam")
 
-**Key Features**:
-- ✅ System validation (Docker, ports, disk space, permissions)
-- ✅ Environment configuration with interactive API key setup
-- ✅ Automated backup creation and rotation (keeps last 5)
-- ✅ Graceful container shutdown
-- ✅ Multi-stage Docker builds for backend + frontend
-- ✅ Health checks with retry logic (60s timeout)
-- ✅ Helper script generation (logs, restart, stop, status, backup, clean)
-- ✅ Bash alias configuration for quick commands
-- ✅ Comprehensive logging with timestamps and colors
-- ✅ Error handling with line numbers
+**Características Principais**:
+- ✅ Validação do sistema (Docker, portas, espaço em disco, permissões)
+- ✅ Configuração de ambiente com setup interativo de API keys
+- ✅ Criação automática de backups com rotação (mantém últimos 5)
+- ✅ Desligamento gracioso de containers
+- ✅ Builds Docker multi-stage para backend + frontend
+- ✅ Health checks com lógica de retry (timeout de 60s)
+- ✅ Geração de scripts auxiliares (logs, restart, stop, status, backup, clean)
+- ✅ Configuração de aliases Bash para comandos rápidos
+- ✅ Logging abrangente com timestamps e cores
+- ✅ Tratamento de erros com números de linha
 
-**Deployment Flow**:
-1. **Validation**: Check Docker, disk space, ports, permissions
-2. **Setup**: Create directory structure, configure .env
-3. **Preparation**: Backup existing config, stop old containers, clean images
-4. **Build**: Build backend and frontend Docker images with tags
-5. **Deploy**: Start containers with docker-compose
-6. **Validation**: Health check endpoints (backend:3001, frontend:80)
-7. **Finalization**: Create helper scripts, configure aliases
+**Fluxo de Deploy**:
+1. **Validação**: Verifica Docker, espaço em disco, portas, permissões
+2. **Setup**: Cria estrutura de diretórios, configura .env
+3. **Preparação**: Faz backup da config existente, para containers antigos, limpa imagens
+4. **Build**: Constrói imagens Docker do backend e frontend com tags
+5. **Deploy**: Inicia containers com docker-compose
+6. **Validação**: Health check nos endpoints (backend:3001, frontend:80)
+7. **Finalização**: Cria scripts auxiliares, configura aliases
 
-**Default Configuration**:
+**Configuração Padrão**:
 ```bash
 APP_PATH="/opt/docker/apps/cortex/myfuckexam"
 BACKEND_PATH="${APP_PATH}/backend"
@@ -112,115 +112,115 @@ FRONTEND_PATH="${APP_PATH}/frontend"
 LOGS_PATH="${APP_PATH}/logs"
 BACKUPS_PATH="${APP_PATH}/backups"
 SCRIPTS_PATH="${APP_PATH}/scripts"
-MAX_DEPLOY_TIME=600  # 10 minutes
+MAX_DEPLOY_TIME=600  # 10 minutos
 ```
 
-**Generated Helper Scripts**:
-- `logs.sh` - View container logs (tail 100)
-- `restart.sh` - Restart containers
-- `stop.sh` - Stop containers gracefully
-- `status.sh` - Show container status and resource usage
-- `backup.sh` - Create timestamped backup
-- `clean.sh` - Clean containers and prune system
-- `git-commit.sh` - Auto-commit and push changes
+**Scripts Auxiliares Gerados**:
+- `logs.sh` - Visualiza logs dos containers (tail 100)
+- `restart.sh` - Reinicia containers
+- `stop.sh` - Para containers graciosamente
+- `status.sh` - Mostra status dos containers e uso de recursos
+- `backup.sh` - Cria backup com timestamp
+- `clean.sh` - Limpa containers e faz prune do sistema
+- `git-commit.sh` - Auto-commit e push de mudanças
 
-**Difference Between Scripts**:
-- `auto-deploy.sh`: Main version with full features
-- `auto-deploy-opt.sh`: Optimized variant with minor fixes:
-  - Better `bc` command fallback for disk space calculation
-  - Improved spacing in log output formatting
-  - Fixed label on line 314 ("Backend" instead of "Frontend")
+**Diferença Entre os Scripts**:
+- `auto-deploy.sh`: Versão principal com todas as funcionalidades
+- `auto-deploy-opt.sh`: Variante otimizada com correções menores:
+  - Melhor fallback do comando `bc` para cálculo de espaço em disco
+  - Espaçamento melhorado na formatação da saída de logs
+  - Correção de label na linha 314 ("Backend" ao invés de "Frontend")
 
-### 2. React Deployment System (`react/`)
+### 2. Sistema de Deploy React (`react/`)
 
-**Purpose**: Complete automated deployment system for React applications with Docker
+**Propósito**: Sistema completo de deploy automatizado para aplicações React com Docker
 
-**Components**:
+**Componentes**:
 
 #### `install.sh`
-- Installs Docker, Docker Compose, Node.js
-- Sets up directory structure (`/opt/scripts/`, `/opt/apps/`)
-- Installs all deployment scripts globally
-- Configures system-wide commands
+- Instala Docker, Docker Compose, Node.js
+- Configura estrutura de diretórios (`/opt/scripts/`, `/opt/apps/`)
+- Instala todos os scripts de deploy globalmente
+- Configura comandos do sistema
 
 #### `manage-apps.sh`
-- Interactive menu system for managing applications
-- CLI commands: list, status, start, stop, restart, logs, remove
-- Centralized application management
+- Sistema de menu interativo para gerenciar aplicações
+- Comandos CLI: list, status, start, stop, restart, logs, remove
+- Gerenciamento centralizado de aplicações
 
 #### `quick.sh`
-- Rapid deployment for existing React projects
-- Interactive prompts for app name, port, source path
-- Automated Docker build and deployment
+- Deploy rápido para projetos React existentes
+- Prompts interativos para nome da app, porta, caminho do código
+- Build e deploy Docker automatizados
 
 #### `vite.sh`
-- Specialized deployment for Vite-based React apps
-- Optimized build configuration
+- Deploy especializado para aplicações React baseadas em Vite
+- Configuração de build otimizada
 
 #### `Dockerfile`
-- Multi-stage build (node:18-alpine base)
-- Optimized for production
-- Nginx serving layer
+- Build multi-stage (base node:18-alpine)
+- Otimizado para produção
+- Camada de serving com Nginx
 
 #### `docker-compose.yml`
-- Container orchestration
-- Volume management
-- Network configuration
-- Port mapping
+- Orquestração de containers
+- Gerenciamento de volumes
+- Configuração de rede
+- Mapeamento de portas
 
 #### `nginx.conf`
-- Gzip compression
-- Static asset caching
-- Security headers
-- SPA fallback routing (try_files)
+- Compressão Gzip
+- Cache de assets estáticos
+- Headers de segurança
+- Roteamento de fallback para SPA (try_files)
 
-**Generated Directory Structure**:
+**Estrutura de Diretórios Gerada**:
 ```
 /opt/
-├── scripts/              # Global deployment scripts
-│   ├── deploy-app        # Deploy existing React app
-│   ├── deploy-new        # Create new React app
-│   ├── manage-apps       # Application manager
-│   └── deploy-health     # System health check
+├── scripts/              # Scripts de deploy globais
+│   ├── deploy-app        # Deploy de app React existente
+│   ├── deploy-new        # Cria nova app React
+│   ├── manage-apps       # Gerenciador de aplicações
+│   └── deploy-health     # Verificação de saúde do sistema
 │
-└── apps/                 # Deployed applications
-    └── {app-name}/
-        ├── frontend/     # Source code
+└── apps/                 # Aplicações deployadas
+    └── {nome-app}/
+        ├── frontend/     # Código fonte
         ├── docker-compose.yml
         ├── Dockerfile
         ├── nginx.conf
-        ├── start.sh      # Start this app
-        ├── stop.sh       # Stop this app
-        ├── restart.sh    # Restart this app
-        ├── logs.sh       # View logs
-        ├── update.sh     # Rebuild and redeploy
-        └── backup.sh     # Backup this app
+        ├── start.sh      # Inicia esta app
+        ├── stop.sh       # Para esta app
+        ├── restart.sh    # Reinicia esta app
+        ├── logs.sh       # Visualiza logs
+        ├── update.sh     # Rebuild e redeploy
+        └── backup.sh     # Backup desta app
 ```
 
-**Quick Commands** (after installation):
+**Comandos Rápidos** (após instalação):
 ```bash
-deploy-app         # Deploy existing React app
-deploy-new         # Create new React project
-manage-apps        # Interactive manager
-deploy-health      # System health check
+deploy-app         # Deploy de app React existente
+deploy-new         # Cria novo projeto React
+manage-apps        # Gerenciador interativo
+deploy-health      # Verificação de saúde do sistema
 ```
 
-**Per-Application Commands**:
+**Comandos por Aplicação**:
 ```bash
-cd /opt/apps/{app-name}
-./start.sh         # Start application
-./stop.sh          # Stop application
-./restart.sh       # Restart application
-./logs.sh          # View logs (real-time)
-./update.sh        # Rebuild and redeploy
-./backup.sh        # Create backup
+cd /opt/apps/{nome-app}
+./start.sh         # Inicia aplicação
+./stop.sh          # Para aplicação
+./restart.sh       # Reinicia aplicação
+./logs.sh          # Visualiza logs (tempo real)
+./update.sh        # Rebuild e redeploy
+./backup.sh        # Cria backup
 ```
 
 ---
 
-## 💻 Development Workflows
+## 💻 Fluxos de Desenvolvimento
 
-### For Contributing Code
+### Para Contribuir com Código
 
 1. **Fork & Clone**
    ```bash
@@ -228,17 +228,17 @@ cd /opt/apps/{app-name}
    cd codes-pub
    ```
 
-2. **Create Feature Branch**
+2. **Criar Branch de Feature**
    ```bash
-   git checkout -b feature/my-feature
+   git checkout -b feature/minha-feature
    ```
 
-3. **Make Changes**
-   - Follow existing code style
-   - Add comments in Portuguese (pt-BR) for Brazilian audience
-   - Test in isolated environment first
+3. **Fazer Alterações**
+   - Seguir o estilo de código existente
+   - Adicionar comentários em português (pt-BR) para audiência brasileira
+   - Testar em ambiente isolado primeiro
 
-4. **Commit Standards**
+4. **Padrões de Commit**
    ```bash
    git commit -m "feat: Adiciona nova feature"
    git commit -m "fix: Corrige bug no middleware"
@@ -249,68 +249,68 @@ cd /opt/apps/{app-name}
 
 5. **Push & PR**
    ```bash
-   git push origin feature/my-feature
-   # Open Pull Request on GitHub
+   git push origin feature/minha-feature
+   # Abrir Pull Request no GitHub
    ```
 
-### Status Tags for Code
+### Tags de Status para Código
 
-When contributing or documenting, always indicate status:
+Ao contribuir ou documentar, sempre indicar o status:
 
-- ✅ **Validado** - Tested and working in specific environment (document env)
-- ⚠️ **Não Validado** - Functional but lacks extensive testing
-- 🧪 **Experimental** - Proof of concept or in development
-- 📚 **Didático** - Educational example
+- ✅ **Validado** - Testado e funcionando em ambiente específico (documentar ambiente)
+- ⚠️ **Não Validado** - Funcional mas sem testes extensivos
+- 🧪 **Experimental** - Prova de conceito ou em desenvolvimento
+- 📚 **Didático** - Exemplo educacional
 
-### Testing Before Production
+### Testes Antes de Produção
 
-**CRITICAL**: Always test in safe environments first!
+**CRÍTICO**: Sempre testar em ambientes seguros primeiro!
 
 ```bash
-# Docker isolated environment
+# Ambiente isolado com Docker
 docker-compose up -d
 
-# Python virtual environment
+# Ambiente virtual Python
 python -m venv venv
 source venv/bin/activate
 
-# Test on non-production servers
-ssh test-server
+# Testar em servidores de não-produção
+ssh servidor-teste
 ```
 
 ---
 
-## 🔧 Key Conventions
+## 🔧 Convenções Principais
 
-### File Naming
-- Use `kebab-case` for files: `user-authentication.js`
-- Be descriptive: `jwt-middleware.js` (not `middleware.js`)
-- Include appropriate extensions
+### Nomenclatura de Arquivos
+- Usar `kebab-case` para arquivos: `autenticacao-usuario.js`
+- Ser descritivo: `jwt-middleware.js` (não: `middleware.js`)
+- Incluir extensões apropriadas
 
-### Code Documentation
-- **Language**: Portuguese (pt-BR) for comments (Brazilian audience)
-- **Comments**: Explain complex logic, not obvious code
-- **Headers**: Include purpose, author, version in script headers
-- **TODO/FIXME**: Mark incomplete or problematic code clearly
+### Documentação de Código
+- **Idioma**: Português (pt-BR) para comentários (audiência brasileira)
+- **Comentários**: Explicar lógica complexa, não código óbvio
+- **Cabeçalhos**: Incluir propósito, autor, versão nos cabeçalhos dos scripts
+- **TODO/FIXME**: Marcar claramente código incompleto ou problemático
 
-### Bash Scripting Standards
+### Padrões de Scripts Bash
 
-1. **Error Handling**
+1. **Tratamento de Erros**
    ```bash
-   set -e  # Exit on error
+   set -e  # Sair em caso de erro
    trap 'handle_error ${LINENO}' ERR
    ```
 
-2. **Logging Functions**
+2. **Funções de Log**
    ```bash
-   log_section() { ... }    # Section headers
-   log_success() { ... }    # Success messages (green)
-   log_error() { ... }      # Error messages (red)
-   log_warning() { ... }    # Warnings (yellow)
-   log_info() { ... }       # Info messages (cyan)
+   log_section() { ... }    # Cabeçalhos de seção
+   log_success() { ... }    # Mensagens de sucesso (verde)
+   log_error() { ... }      # Mensagens de erro (vermelho)
+   log_warning() { ... }    # Avisos (amarelo)
+   log_info() { ... }       # Mensagens informativas (ciano)
    ```
 
-3. **Color Codes**
+3. **Códigos de Cores**
    ```bash
    RED='\033[0;31m'
    GREEN='\033[0;32m'
@@ -318,397 +318,397 @@ ssh test-server
    BLUE='\033[0;34m'
    CYAN='\033[0;36m'
    MAGENTA='\033[0;35m'
-   NC='\033[0m'  # No Color
+   NC='\033[0m'  # Sem Cor
    ```
 
-4. **User Interaction**
-   - Clear ASCII art banners for major scripts
-   - Interactive prompts with validation
-   - Progress indicators (spinners for long operations)
-   - Comprehensive error messages with actionable advice
+4. **Interação com Usuário**
+   - Banners ASCII art claros para scripts principais
+   - Prompts interativos com validação
+   - Indicadores de progresso (spinners para operações longas)
+   - Mensagens de erro abrangentes com conselhos acionáveis
 
-### Docker Best Practices
+### Melhores Práticas Docker
 
-1. **Multi-stage Builds** - Keep images small
-2. **Alpine Base** - Use `node:18-alpine` for minimal footprint
-3. **Layer Caching** - Order Dockerfile commands for optimal caching
-4. **Health Checks** - Always include health endpoints
-5. **Graceful Shutdown** - Use proper signal handling
+1. **Builds Multi-stage** - Manter imagens pequenas
+2. **Base Alpine** - Usar `node:18-alpine` para footprint mínimo
+3. **Cache de Camadas** - Ordenar comandos do Dockerfile para cache otimizado
+4. **Health Checks** - Sempre incluir endpoints de health
+5. **Desligamento Gracioso** - Usar tratamento adequado de sinais
 
-### Security Considerations
+### Considerações de Segurança
 
-⚠️ **IMPORTANT**: This repository is PUBLIC!
+⚠️ **IMPORTANTE**: Este repositório é PÚBLICO!
 
-- **NEVER** commit credentials, API keys, or secrets
-- **ALWAYS** use `.env` files (add to `.gitignore`)
-- **REMOVE** sensitive data before sharing
-- **VALIDATE** all user inputs in scripts
-- **REVIEW** code for command injection vulnerabilities
-- **TEST** in isolated environments first
+- **NUNCA** commitar credenciais, API keys ou secrets
+- **SEMPRE** usar arquivos `.env` (adicionar ao `.gitignore`)
+- **REMOVER** dados sensíveis antes de compartilhar
+- **VALIDAR** todos os inputs de usuário nos scripts
+- **REVISAR** código para vulnerabilidades de injeção de comando
+- **TESTAR** em ambientes isolados primeiro
 
 ---
 
-## 🛠️ Working with This Repository as an AI Assistant
+## 🛠️ Trabalhando com Este Repositório como Assistente de IA
 
-### Understanding Code Status
+### Entendendo o Status do Código
 
-When analyzing code in this repository:
+Ao analisar código neste repositório:
 
-1. **Check for Status Indicators** - Look for ✅/⚠️/🧪/📚 tags
-2. **Read Comments Carefully** - Important context is in Portuguese comments
-3. **Validate Dependencies** - Check version requirements
-4. **Understand Environment** - Note target OS, Docker versions, etc.
+1. **Verificar Indicadores de Status** - Procurar por tags ✅/⚠️/🧪/📚
+2. **Ler Comentários Cuidadosamente** - Contexto importante está nos comentários em português
+3. **Validar Dependências** - Verificar requisitos de versão
+4. **Entender Ambiente** - Notar SO alvo, versões do Docker, etc.
 
-### Making Modifications
+### Fazendo Modificações
 
-1. **Preserve Existing Patterns**
-   - Maintain logging structure
-   - Keep color coding consistent
-   - Follow error handling patterns
+1. **Preservar Padrões Existentes**
+   - Manter estrutura de logging
+   - Manter codificação de cores consistente
+   - Seguir padrões de tratamento de erros
 
-2. **Enhance, Don't Replace**
-   - Add features incrementally
-   - Maintain backward compatibility when possible
-   - Document breaking changes clearly
+2. **Melhorar, Não Substituir**
+   - Adicionar funcionalidades incrementalmente
+   - Manter compatibilidade retroativa quando possível
+   - Documentar mudanças que quebram compatibilidade claramente
 
-3. **Test Comprehensively**
-   - Test happy paths
-   - Test error conditions
-   - Test edge cases (empty inputs, special characters, etc.)
+3. **Testar Abrangentemente**
+   - Testar caminhos felizes
+   - Testar condições de erro
+   - Testar casos extremos (inputs vazios, caracteres especiais, etc.)
 
-4. **Document Changes**
-   - Update relevant README files
-   - Add inline comments for complex logic
-   - Update CLAUDE.md if structure changes
+4. **Documentar Mudanças**
+   - Atualizar arquivos README relevantes
+   - Adicionar comentários inline para lógica complexa
+   - Atualizar CLAUDE.md se a estrutura mudar
 
-### Common Tasks for AI Assistants
+### Tarefas Comuns para Assistentes de IA
 
-#### Adding a New Deployment Script
+#### Adicionando um Novo Script de Deploy
 
-1. Place in appropriate directory (`bash/` or `react/`)
-2. Follow naming conventions
-3. Include comprehensive header:
+1. Colocar no diretório apropriado (`bash/` ou `react/`)
+2. Seguir convenções de nomenclatura
+3. Incluir cabeçalho abrangente:
    ```bash
    #!/bin/bash
    #==============================================================================
-   # Script Name - Version
-   # Author: Name
-   # Description: What it does
+   # Nome do Script - Versão
+   # Autor: Nome
+   # Descrição: O que faz
    #==============================================================================
    ```
-4. Add to relevant README
-5. Test thoroughly
-6. Mark with appropriate status tag
+4. Adicionar ao README relevante
+5. Testar minuciosamente
+6. Marcar com tag de status apropriada
 
-#### Debugging Deployment Issues
+#### Debugando Problemas de Deploy
 
-1. **Check Logs First**
+1. **Verificar Logs Primeiro**
    ```bash
-   # For auto-deploy scripts
+   # Para scripts auto-deploy
    tail -f /opt/docker/apps/cortex/myfuckexam/logs/deploy-*.log
 
-   # For React apps
-   manage-apps logs {app-name}
+   # Para apps React
+   manage-apps logs {nome-app}
    docker-compose logs
    ```
 
-2. **Verify System Requirements**
-   - Docker version
-   - Available disk space
-   - Port availability
-   - File permissions
+2. **Verificar Requisitos do Sistema**
+   - Versão do Docker
+   - Espaço em disco disponível
+   - Disponibilidade de portas
+   - Permissões de arquivos
 
-3. **Check Configuration**
-   - .env file validity
-   - docker-compose.yml syntax
-   - Nginx configuration
+3. **Verificar Configuração**
+   - Validade do arquivo .env
+   - Sintaxe do docker-compose.yml
+   - Configuração do Nginx
 
-4. **Common Issues**
-   - Port conflicts → Use different port or stop conflicting service
-   - Permission denied → Check file ownership and chmod
-   - Image build fails → Check Dockerfile syntax and dependencies
-   - Health check fails → Verify endpoint URLs and service startup time
+4. **Problemas Comuns**
+   - Conflitos de porta → Usar porta diferente ou parar serviço conflitante
+   - Permissão negada → Verificar ownership de arquivos e chmod
+   - Falha no build da imagem → Verificar sintaxe do Dockerfile e dependências
+   - Falha no health check → Verificar URLs dos endpoints e tempo de startup do serviço
 
-#### Updating Documentation
+#### Atualizando Documentação
 
-1. **Keep Consistency**
-   - Match existing tone and style
-   - Use same formatting patterns
-   - Maintain bilingual approach (EN structure, PT comments)
+1. **Manter Consistência**
+   - Corresponder tom e estilo existentes
+   - Usar mesmos padrões de formatação
+   - Manter abordagem em pt-BR
 
-2. **Update Multiple Locations**
-   - Main README.md
-   - Directory-specific READMEs
-   - CLAUDE.md (this file)
-   - Inline code comments
+2. **Atualizar Múltiplas Localizações**
+   - README.md principal
+   - READMEs específicos de diretórios
+   - CLAUDE.md (este arquivo)
+   - Comentários inline no código
 
 ---
 
-## 📊 Project Standards
+## 📊 Padrões do Projeto
 
-### Minimum Requirements
+### Requisitos Mínimos
 
-For deployment scripts to work:
+Para que os scripts de deploy funcionem:
 
-- **OS**: Ubuntu 20.04+ / Debian 10+
+- **SO**: Ubuntu 20.04+ / Debian 10+
 - **CPU**: 1+ cores
-- **RAM**: 1+ GB (2GB recommended)
-- **Disk**: 10+ GB free space
-- **Access**: Root or sudo privileges
-- **Network**: Internet access for Docker pulls
+- **RAM**: 1+ GB (2GB recomendado)
+- **Disco**: 10+ GB de espaço livre
+- **Acesso**: Privilégios root ou sudo
+- **Rede**: Acesso à internet para pulls do Docker
 
-### Performance Optimizations
+### Otimizações de Performance
 
-Scripts include:
-- ⚡ Multi-stage Docker builds
-- 🗜️ Gzip compression
-- 💾 Static asset caching
-- 🔒 Security headers
-- 🏥 Integrated health checks
-- 🔄 Hot reload in development
-
----
-
-## 🚨 Important Disclaimers
-
-### Code Validation Levels
-
-This repository contains code at various validation stages:
-
-1. **Validated** (✅) - Tested in documented environments
-2. **Not Validated** (⚠️) - Functional but not extensively tested
-3. **Experimental** (🧪) - PoC, studies, or examples
-4. **Educational** (📚) - For learning purposes
-
-### Responsibility
-
-**CRITICAL**: Users assume ALL responsibility:
-
-- ❌ **No guarantees** of functionality in all environments
-- ❌ **No warranty** for data loss, system failures, or security issues
-- ❌ **No liability** for direct or indirect damages
-- ✅ **Testing required** before production use
-- ✅ **Technical knowledge required** - understand before executing
-- ✅ **User accepts all risks** associated with usage
-
-### Security Stance
-
-- Review ALL code before execution
-- Test in isolated environments
-- Remove credentials before adapting
-- Validate compatibility with your versions
-- Understand implications of every command
+Scripts incluem:
+- ⚡ Builds Docker multi-stage
+- 🗜️ Compressão Gzip
+- 💾 Cache de assets estáticos
+- 🔒 Headers de segurança
+- 🏥 Health checks integrados
+- 🔄 Hot reload em desenvolvimento
 
 ---
 
-## 🤝 Contribution Guidelines
+## 🚨 Disclaimers Importantes
 
-### Who Can Contribute
+### Níveis de Validação de Código
 
-- **Anyone** - Beginner to expert, human or AI
-- **No hierarchies** - Quality matters, not credentials
-- **Collaborative spirit** - Help others learn
+Este repositório contém código em vários estágios de validação:
 
-### What to Contribute
+1. **Validado** (✅) - Testado em ambientes documentados
+2. **Não Validado** (⚠️) - Funcional mas não extensivamente testado
+3. **Experimental** (🧪) - PoC, estudos ou exemplos
+4. **Educacional** (📚) - Para fins de aprendizado
 
-- ✅ New deployment scripts or tools
-- ✅ Bug fixes and improvements
-- ✅ Documentation enhancements
-- ✅ Examples and tutorials
-- ✅ Performance optimizations
-- ✅ Security improvements
+### Responsabilidade
 
-### Contribution Standards
+**CRÍTICO**: Usuários assumem TODA a responsabilidade:
 
-1. **Documentation** - All code must be well-documented
-2. **Comments** - Explain complex sections (in Portuguese for pt-BR audience)
-3. **Status** - Clearly mark validation status
-4. **README** - Add or update relevant README files
-5. **Clean Code** - Follow best practices
-6. **Security** - Remove all sensitive information
-7. **Testing** - Test before submitting
+- ❌ **Sem garantias** de funcionalidade em todos os ambientes
+- ❌ **Sem garantia** para perda de dados, falhas de sistema ou problemas de segurança
+- ❌ **Sem responsabilidade** por danos diretos ou indiretos
+- ✅ **Testes obrigatórios** antes de uso em produção
+- ✅ **Conhecimento técnico obrigatório** - entender antes de executar
+- ✅ **Usuário aceita todos os riscos** associados ao uso
 
-### PR Process
+### Postura de Segurança
 
-1. Fork repository
-2. Create feature branch: `git checkout -b feature/my-feature`
-3. Make changes following conventions
-4. Test thoroughly in safe environment
-5. Commit with clear messages (feat/fix/docs/refactor/test)
-6. Push to your fork: `git push origin feature/my-feature`
-7. Open Pull Request with detailed description
+- Revisar TODO o código antes da execução
+- Testar em ambientes isolados
+- Remover credenciais antes de adaptar
+- Validar compatibilidade com suas versões
+- Entender implicações de cada comando
 
 ---
 
-## 📚 Additional Resources
+## 🤝 Diretrizes de Contribuição
 
-### Documentation Files
+### Quem Pode Contribuir
 
-- `README.md` - Main repository overview
-- `react/README.md` - Quick start for React deployment
-- `react/README-DOCKER.md` - Docker-specific guide
-- `react/guia-completo.md` - Complete guide (Portuguese)
-- `LICENSE` - MIT License terms
+- **Qualquer pessoa** - Do iniciante ao expert, humano ou IA
+- **Sem hierarquias** - Qualidade importa, não credenciais
+- **Espírito colaborativo** - Ajudar outros a aprender
 
-### External References
+### O Que Contribuir
 
-- [Docker Documentation](https://docs.docker.com)
+- ✅ Novos scripts de deploy ou ferramentas
+- ✅ Correções de bugs e melhorias
+- ✅ Aprimoramentos de documentação
+- ✅ Exemplos e tutoriais
+- ✅ Otimizações de performance
+- ✅ Melhorias de segurança
+
+### Padrões de Contribuição
+
+1. **Documentação** - Todo código deve ser bem documentado
+2. **Comentários** - Explicar seções complexas (em português para audiência pt-BR)
+3. **Status** - Marcar claramente o status de validação
+4. **README** - Adicionar ou atualizar arquivos README relevantes
+5. **Código Limpo** - Seguir melhores práticas
+6. **Segurança** - Remover todas as informações sensíveis
+7. **Testes** - Testar antes de submeter
+
+### Processo de PR
+
+1. Fazer fork do repositório
+2. Criar branch de feature: `git checkout -b feature/minha-feature`
+3. Fazer mudanças seguindo as convenções
+4. Testar minuciosamente em ambiente seguro
+5. Commitar com mensagens claras (feat/fix/docs/refactor/test)
+6. Push para seu fork: `git push origin feature/minha-feature`
+7. Abrir Pull Request com descrição detalhada
+
+---
+
+## 📚 Recursos Adicionais
+
+### Arquivos de Documentação
+
+- `README.md` - Visão geral principal do repositório
+- `react/README.md` - Início rápido para deploy React
+- `react/README-DOCKER.md` - Guia específico de Docker
+- `react/guia-completo.md` - Guia completo (Português)
+- `LICENSE` - Termos da licença MIT
+
+### Referências Externas
+
+- [Documentação Docker](https://docs.docker.com)
 - [Docker Compose](https://docs.docker.com/compose/)
-- [React Documentation](https://react.dev)
-- [Nginx Documentation](https://nginx.org/en/docs/)
-- [Node.js Documentation](https://nodejs.org/docs)
+- [Documentação React](https://react.dev)
+- [Documentação Nginx](https://nginx.org/en/docs/)
+- [Documentação Node.js](https://nodejs.org/docs)
 
-### Useful Commands
+### Comandos Úteis
 
 ```bash
-# Repository exploration
-tree -L 3 -a                    # View structure
-git log --oneline               # View commit history
-find . -type f -name "*.sh"     # Find all shell scripts
+# Exploração do repositório
+tree -L 3 -a                    # Visualizar estrutura
+git log --oneline               # Ver histórico de commits
+find . -type f -name "*.sh"     # Encontrar todos os scripts shell
 
-# Docker operations
-docker ps                       # List running containers
-docker images                   # List images
-docker-compose logs -f          # Follow logs
-docker system prune -a          # Clean everything
+# Operações Docker
+docker ps                       # Listar containers rodando
+docker images                   # Listar imagens
+docker-compose logs -f          # Seguir logs
+docker system prune -a          # Limpar tudo
 
-# System checks
-df -h                          # Disk space
-netstat -tuln                  # Port usage
-systemctl status docker        # Docker status
+# Verificações de sistema
+df -h                          # Espaço em disco
+netstat -tuln                  # Uso de portas
+systemctl status docker        # Status do Docker
 ```
 
 ---
 
-## 🎓 Learning from This Repository
+## 🎓 Aprendendo com Este Repositório
 
-### For Beginners
+### Para Iniciantes
 
-Start with:
-1. Read main README.md thoroughly
-2. Review `react/README.md` for practical examples
-3. Study `install.sh` to understand system setup
-4. Try `quick.sh` for hands-on deployment
+Comece com:
+1. Ler README.md principal minuciosamente
+2. Revisar `react/README.md` para exemplos práticos
+3. Estudar `install.sh` para entender configuração do sistema
+4. Experimentar `quick.sh` para deploy prático
 
-### For Intermediate Users
+### Para Usuários Intermediários
 
-Explore:
-1. `auto-deploy.sh` for advanced bash patterns
-2. Docker multi-stage builds in `Dockerfile`
-3. Nginx optimization in `nginx.conf`
-4. Error handling and logging patterns
+Explorar:
+1. `auto-deploy.sh` para padrões avançados de bash
+2. Builds Docker multi-stage no `Dockerfile`
+3. Otimização do Nginx no `nginx.conf`
+4. Padrões de tratamento de erros e logging
 
-### For Advanced Users
+### Para Usuários Avançados
 
-Deep dive:
-1. Contribute optimizations
-2. Add new deployment targets
-3. Enhance security features
-4. Create advanced automation workflows
-
----
-
-## 🔄 Repository Maintenance
-
-### Regular Updates
-
-This repository is actively maintained:
-
-- ⭐ Star for updates
-- 👁️ Watch for notifications
-- 🔔 Follow releases
-
-### Reporting Issues
-
-- **Bugs**: Open issue with detailed reproduction steps
-- **Questions**: Use Discussions
-- **Suggestions**: Open issue with "enhancement" label
-
-### Getting Help
-
-1. **Read Documentation** - Check README files first
-2. **Search Issues** - Problem might be known
-3. **Ask in Discussions** - Community can help
-4. **Open Issue** - For new bugs or features
+Aprofundar:
+1. Contribuir com otimizações
+2. Adicionar novos alvos de deploy
+3. Aprimorar funcionalidades de segurança
+4. Criar workflows de automação avançados
 
 ---
 
-## 📝 Version History
+## 🔄 Manutenção do Repositório
 
-### Current Structure (v1.0)
-- ✅ Auto-deploy scripts for containerized apps
-- ✅ Complete React deployment system
-- ✅ Docker + Nginx optimization
-- ✅ Interactive management tools
-- ✅ Comprehensive documentation
+### Atualizações Regulares
 
-### Planned Additions (Organic Growth)
-- 📋 DevOps/SecOps stacks (K8s, CI/CD, IaC)
-- 🤖 AI/ML integrations (n8n, LLMs, RAG)
-- 🗄️ Database scripts and queries
-- 🔒 Enhanced security features
-- 📊 Monitoring and observability tools
+Este repositório é ativamente mantido:
+
+- ⭐ Dar star para atualizações
+- 👁️ Watch para notificações
+- 🔔 Seguir releases
+
+### Reportando Problemas
+
+- **Bugs**: Abrir issue com passos detalhados de reprodução
+- **Perguntas**: Usar Discussions
+- **Sugestões**: Abrir issue com label "enhancement"
+
+### Obtendo Ajuda
+
+1. **Ler Documentação** - Verificar arquivos README primeiro
+2. **Pesquisar Issues** - Problema pode ser conhecido
+3. **Perguntar em Discussions** - Comunidade pode ajudar
+4. **Abrir Issue** - Para novos bugs ou features
 
 ---
 
-## 👤 About the Author
+## 📝 Histórico de Versões
+
+### Estrutura Atual (v1.0)
+- ✅ Scripts auto-deploy para apps containerizadas
+- ✅ Sistema completo de deploy React
+- ✅ Otimização Docker + Nginx
+- ✅ Ferramentas de gerenciamento interativas
+- ✅ Documentação abrangente
+
+### Adições Planejadas (Crescimento Orgânico)
+- 📋 Stacks DevOps/SecOps (K8s, CI/CD, IaC)
+- 🤖 Integrações IA/ML (n8n, LLMs, RAG)
+- 🗄️ Scripts de banco de dados e queries
+- 🔒 Funcionalidades de segurança aprimoradas
+- 📊 Ferramentas de monitoramento e observabilidade
+
+---
+
+## 👤 Sobre o Autor
 
 **Amândio Vaz**
-- **Role**: Infrastructure, Security & Observability Engineering
-- **Experience**: 20+ years in IT
-- **Philosophy**: Knowledge sharing over knowledge hoarding
+- **Função**: Engenharia de Infraestrutura, Segurança & Observabilidade
+- **Experiência**: 20+ anos em TI
+- **Filosofia**: Compartilhamento de conhecimento sobre acúmulo de conhecimento
 - **GitHub**: [@amandio-vaz](https://github.com/amandio-vaz)
 
-### Motivation
+### Motivação
 
-After 20+ years in IT, this repository is a response to the "knowledge guardian" culture - professionals who hoard information instead of sharing it. This is a space for **genuine collaboration, mutual learning, and collective growth**.
+Após 20+ anos em TI, este repositório é uma resposta à cultura do "guardião do conhecimento" - profissionais que acumulam informação ao invés de compartilhar. Este é um espaço para **colaboração genuína, aprendizado mútuo e crescimento coletivo**.
 
-> "We grow when we share. We evolve when we collaborate."
+> "Crescemos quando compartilhamos. Evoluímos quando colaboramos."
 
 ---
 
-## ✨ Quick Reference for AI Assistants
+## ✨ Referência Rápida para Assistentes de IA
 
-### Repository Type
-Public code sharing repository with deployment automation tools
+### Tipo de Repositório
+Repositório público de compartilhamento de códigos com ferramentas de automação de deploy
 
-### Primary Language
-Bash scripts with some configuration files (YAML, conf)
+### Linguagem Primária
+Scripts Bash com alguns arquivos de configuração (YAML, conf)
 
-### Code Language
+### Idioma do Código
 - Scripts: Bash
-- Comments: Portuguese (pt-BR)
-- Documentation: English structure, Portuguese details
+- Comentários: Português (pt-BR)
+- Documentação: Português brasileiro
 
-### Target Audience
-Developers, DevOps engineers, system administrators, AI assistants
+### Público-Alvo
+Desenvolvedores, engenheiros DevOps, administradores de sistemas, assistentes de IA
 
-### Deployment Targets
-- Docker containerized applications
-- React.js frontend applications
-- Node.js backend services
-- Nginx web servers
+### Alvos de Deploy
+- Aplicações containerizadas em Docker
+- Aplicações frontend React.js
+- Serviços backend Node.js
+- Servidores web Nginx
 
-### Key Files to Reference
-- `bash/apps-ai/auto-deploy.sh` - Main deployment automation
-- `react/install.sh` - System installer
-- `react/manage-apps.sh` - Application manager
-- `README.md` - Repository overview
+### Arquivos Chave para Referência
+- `bash/apps-ai/auto-deploy.sh` - Automação principal de deploy
+- `react/install.sh` - Instalador do sistema
+- `react/manage-apps.sh` - Gerenciador de aplicações
+- `README.md` - Visão geral do repositório
 
-### Common Operations
-1. **Full app deployment**: `bash/apps-ai/auto-deploy.sh`
-2. **React app setup**: `react/install.sh` → `deploy-app`
-3. **App management**: `manage-apps list|start|stop|logs`
-4. **Debugging**: Check logs in `/opt/docker/apps/*/logs/` or `/opt/apps/*/`
+### Operações Comuns
+1. **Deploy completo de app**: `bash/apps-ai/auto-deploy.sh`
+2. **Setup de app React**: `react/install.sh` → `deploy-app`
+3. **Gerenciamento de app**: `manage-apps list|start|stop|logs`
+4. **Debugging**: Verificar logs em `/opt/docker/apps/*/logs/` ou `/opt/apps/*/`
 
-### Warning Flags
-- 🚨 Always test in isolated environments
-- 🚨 Remove credentials before committing
-- 🚨 Validate all user inputs
-- 🚨 Check system requirements before deployment
+### Flags de Alerta
+- 🚨 Sempre testar em ambientes isolados
+- 🚨 Remover credenciais antes de commitar
+- 🚨 Validar todos os inputs de usuário
+- 🚨 Verificar requisitos de sistema antes do deploy
 
 ---
 
-**Made with ❤️ by a simple human, for humans and non-humans**
+**Feito com ❤️ de um simples humano, para humanos e não humanos**
 
-*Last updated: 2025-11-21*
+*Última atualização: 2025-11-21*
